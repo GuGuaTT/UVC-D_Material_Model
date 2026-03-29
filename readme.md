@@ -55,6 +55,7 @@ However, in ABAQUS, the Rayleigh damping implementation depends on the material 
    ⚠️ Only supports **mass-proportional** damping by default.
 
 Therefore, to incorporate the $\beta$ term (stiffness-proportional damping) when using the UVC material model, the UVC subroutine must be manually modified. In this work, we extended the original subroutine to create **UVC-D**, which accepts an additional input parameter, $\beta_R$, to allow the inclusion of stiffness-proportional damping effects. This modification follows the guidelines provided in the [ABAQUS documentation]([ABAQUS Analysis User's Manual (v6.6)](https://classes.engineering.wustl.edu/2009/spring/mase5513/abaqus/docs/v6.6/books/usb/default.htm?startat=pt05ch20s01abm43.html)) (ABAQUS, 2019). Specifically, after the element stress is computed from the constitutive model, an additional damping-related stress term is introduced to account for the Rayleigh damping contribution:
+
 $$
 \sigma_m = \sigma + \beta_R D^{el} \dot{\varepsilon}
 $$
@@ -72,6 +73,7 @@ stress = stress + beta_r * MATMUL(elasticity_matrix, strain_rate)
 ````
 
 Since the stress used in the equilibrium check, $\sigma_m$, includes the additional damping term, the corresponding **tangent modulus** should also be based on this modified stress. Therefore, when force equilibrium is not satisfied, the strain increment update will be performed using the tangent of $\sigma_m$, rather than that of the original constitutive stress $\sigma$. This approach can lead to improved convergence performance.
+
 $$
 D_m^{\mathrm{tg}} = \frac{\Delta\sigma_m}{\Delta\varepsilon}
 = \frac{\Delta\sigma}{\Delta\varepsilon} + \beta_R D^{el} \frac{\Delta\varepsilon}{\Delta\varepsilon\, \Delta t}
