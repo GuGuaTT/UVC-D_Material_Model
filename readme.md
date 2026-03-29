@@ -59,7 +59,7 @@ $$
 \sigma_m = \sigma + \beta_R D^{el} \dot{\varepsilon}
 $$
 
-- $ \sigma_m $: Updated stress passed to ABAQUS for equilibrium check
+- $\sigma_m$: Updated stress passed to ABAQUS for equilibrium check
 - $ \sigma $: Constitutive stress from UVC model
 - $ \beta_R $: Rayleigh damping coefficient
 - $ D^{el} $: Elastic stiffness matrix
