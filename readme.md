@@ -60,10 +60,10 @@ $$
 $$
 
 - $\sigma_m$: Updated stress passed to ABAQUS for equilibrium check
-- $ \sigma $: Constitutive stress from UVC model
-- $ \beta_R $: Rayleigh damping coefficient
-- $ D^{el} $: Elastic stiffness matrix
-- $ \dot{\varepsilon} $: Strain rate of the increment
+- $\sigma$: Constitutive stress from UVC model
+- $\beta_R$: Rayleigh damping coefficient
+- $D^{el}$: Elastic stiffness matrix
+- $\dot{\varepsilon}$: Strain rate of the increment
 
 ````fortran
 ! Modifications to the UVC subroutine in multiaxial case
